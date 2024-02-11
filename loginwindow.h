@@ -2,6 +2,10 @@
 #define LOGINWINDOW_H
 
 #include <QDialog>
+#include <QMainWindow>
+#include "utils.h"
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
 
 namespace Ui {
 class LoginWindow;
@@ -12,7 +16,7 @@ class LoginWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit LoginWindow(QWidget *parent = nullptr);
+    explicit LoginWindow(QMainWindow* mainWindow);
     ~LoginWindow();
 
 private slots:
@@ -20,6 +24,7 @@ private slots:
 
 private:
     Ui::LoginWindow *ui;
+    QMainWindow* mainWindow;
 };
 
 #endif // LOGINWINDOW_H

@@ -38,18 +38,30 @@ void utils::readParams(const QString& filePath) {
     throw; // Перебросить исключение для немедленного завершения
     }
 }
-void utils::dbConnect(const QString& username, const QString& password){
-    try {
-    db = QSqlDatabase::addDatabase("QOCI");
-    db.setHostName(parameters["dbHost"]);
-    db.setDatabaseName(parameters["dbName"]);
-    db.setUserName(username);
-    db.setPassword(password);
-    db.open();
-    }
-    catch (const std::exception& e)
+void utils::dbChangeUser(const QString& un, const QString& pw){
+
+    username=un;
+    password=pw;
+    //Удалить текущее подключение
+    db = QSqlDatabase();
+}
+QSqlDatabase& utils::dbInstance()
+{
+    if (!db.isValid())
     {
+    // Здесь выполняется создание и конфигурация объекта QSqlDatabase
+    // на основе параметров подключения, хранящихся в переменных класса
+    try {
+        db.setHostName(parameters["dbHost"]);
+        db.setDatabaseName(parameters["dbName"]);
+        db.setUserName(username);
+        db.setPassword(password);
+        }
+    catch (const std::exception& e)
+        {
     qDebug() << "Произошла ошибка при соединении с БД:" << e.what();
     throw; // Перебросить исключение для немедленного завершения
+        }
     }
+    return db;
 }
