@@ -13,6 +13,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Widgets REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
+find_package(Qt6 REQUIRED COMPONENTS Sql)
 
 set(PROJECT_SOURCES
         main.cpp
@@ -25,6 +26,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(qt_kassa
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
+        loginwindow.h loginwindow.cpp loginwindow.ui
+        utils.h utils.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET qt_kassa APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR

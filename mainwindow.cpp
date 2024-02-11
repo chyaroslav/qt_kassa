@@ -19,3 +19,9 @@ void MainWindow::on_pushButton_clicked()
 
 }
 
+
+void MainWindow::on_tableView_clicked(const QModelIndex &index)
+{
+
+}
+
