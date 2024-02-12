@@ -19,8 +19,6 @@ set(PROJECT_SOURCES
         main.cpp
         mainwindow.cpp
         mainwindow.h
-        utils.h
-        utils.cpp
         mainwindow.ui
 )
 
@@ -29,7 +27,9 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
         loginwindow.h loginwindow.cpp loginwindow.ui
+        scaner.h scaner.cpp
         utils.h utils.cpp
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET qt_kassa APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -37,7 +37,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 # For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
 else()
     if(ANDROID)
-        add_library(qt_kassa SHARED
+        add_library(qt_kassa SHAREDscaner
             ${PROJECT_SOURCES}
         )
 # Define properties for Android with Qt 5 after find_package() calls as:

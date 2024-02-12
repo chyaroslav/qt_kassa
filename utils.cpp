@@ -1,6 +1,11 @@
 #include "utils.h"
 #include <QDebug>
 
+QSqlDatabase utils::db;
+QString utils::username;
+QString utils::password;
+QMap<QString,QString> utils::parameters;
+
 void utils::readParams(const QString& filePath) {
     QFile file(filePath);
     try {
