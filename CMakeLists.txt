@@ -65,3 +65,6 @@ set_target_properties(qt_kassa PROPERTIES
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(qt_kassa)
 endif()
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE Release)
+endif()
